@@ -28,7 +28,7 @@ fun HomeScreen() {
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
         Image(
-            painter = painterResource(id = com.liwaa.specialtasks.R.drawable.logo_liwaa),
+            painter = painterResource(id = R.drawable.logo_liwaa),
             contentDescription = "شعار اللواء",
             contentScale = ContentScale.Fit,
             modifier = Modifier
