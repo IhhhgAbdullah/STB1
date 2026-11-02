@@ -23,7 +23,7 @@ import java.net.HttpURLConnection
 import java.net.URL
 
 private const val SUPABASE_URL = "https://pktifzeaqnwdonlqudpq.supabase.co"
-private const val SUPABASE_KEY = "PUT_PUBLISHABLE_KEY_HERE"
+private const val SUPABASE_KEY = "sb_publishable_ETwyx2lkYnhIL8frJwZoww_OKm6pjpl"
 
 data class NewsItem(val title: String, val body: String)
 
