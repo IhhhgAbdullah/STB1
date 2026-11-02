@@ -24,7 +24,8 @@ import androidx.compose.ui.unit.sp
 fun HomeCards() {
     var openedSection by remember { mutableStateOf<String?>(null) }
 
-    if (openedSection == "الأخبار اليومية") {
+    val opened = openedSection
+    if (opened == "الأخبار اليومية" || opened == "إنجازات اللواء") {
         Column(
             modifier = Modifier
                 .fillMaxSize()
@@ -41,7 +42,7 @@ fun HomeCards() {
                     .clickable { openedSection = null }
                     .padding(12.dp)
             )
-            NewsScreen()
+            if (opened == "الأخبار اليومية") NewsScreen() else AchievementsScreen()
         }
         return
     }
@@ -72,7 +73,9 @@ fun HomeCards() {
                     .fillMaxWidth()
                     .background(Color(0xFF161616))
                     .clickable {
-                        if (title == "الأخبار اليومية") openedSection = title
+                        if (title == "الأخبار اليومية" || title == "إنجازات اللواء") {
+                            openedSection = title
+                        }
                     }
                     .padding(20.dp)
             )
