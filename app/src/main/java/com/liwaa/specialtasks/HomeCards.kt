@@ -7,8 +7,6 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
-import androidx.compose.foundation.rememberScrollState
-import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
@@ -21,8 +19,14 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 
 private val openable = setOf(
-    "الأخبار اليومية", "إنجازات اللواء", "البيانات الرسمية",
-    "أرشيف الصور", "عن اللواء", "صور وسيرة الشهداء", "أرشيف الفيديوهات"
+    "الأخبار اليومية",
+    "شريط الأخبار",
+    "إنجازات اللواء",
+    "أرشيف الصور",
+    "أرشيف الفيديوهات",
+    "صور وسيرة الشهداء",
+    "البيانات الرسمية",
+    "عن اللواء"
 )
 
 @Composable
@@ -49,9 +53,15 @@ fun HomeCards() {
             )
             when (opened) {
                 "الأخبار اليومية" -> NewsScreen()
+                "شريط الأخبار" -> NewsTickerScreen()
                 "إنجازات اللواء" -> AchievementsScreen()
                 "أرشيف الصور" -> PhotosScreen()
-                "عن اللواء" -> AboutScreen()
-                "صور وسيرة الشهداء" -> MartyrsScreen()
                 "أرشيف الفيديوهات" -> VideosScreen()
-                else ->
+                "صور وسيرة الشهداء" -> MartyrsScreen()
+                "البيانات الرسمية" -> OfficialDataScreen()
+                "عن اللواء" -> AboutScreen()
+                else -> {}
+            }
+        }
+    }
+}
