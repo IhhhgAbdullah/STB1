@@ -20,7 +20,10 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 
-private val openable = setOf("الأخبار اليومية", "إنجازات اللواء", "البيانات الرسمية", "أرشيف الصور", "عن اللواء")
+private val openable = setOf(
+    "الأخبار اليومية", "إنجازات اللواء", "البيانات الرسمية",
+    "أرشيف الصور", "عن اللواء", "صور وسيرة الشهداء"
+)
 
 @Composable
 fun HomeCards() {
@@ -49,6 +52,7 @@ fun HomeCards() {
                 "إنجازات اللواء" -> AchievementsScreen()
                 "أرشيف الصور" -> PhotosScreen()
                 "عن اللواء" -> AboutScreen()
+                "صور وسيرة الشهداء" -> MartyrsScreen()
                 else -> StatementsScreen()
             }
         }
