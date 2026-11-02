@@ -27,7 +27,7 @@ import java.net.HttpURLConnection
 import java.net.URL
 
 private const val VID_URL = "https://pktifzeaqnwdonlqudpq.supabase.co"
-private const val VID_KEY = "sb_publishable_ETwyx2lkYnhIL8frJwZoww_OKm6pjpl"
+private const val VID_KEY = "PUT_PUBLISHABLE_KEY_HERE"
 
 data class VideoItem(val title: String, val description: String, val embedId: String)
 
@@ -101,4 +101,17 @@ fun VideosScreen() {
                 Column(
                     modifier = Modifier
                         .fillMaxWidth()
-                        .background(Color(0xFF1
+                        .background(Color(0xFF161616))
+                        .clickable {
+                            if (item.embedId.isNotEmpty()) playingId = item.embedId
+                        }
+                        .padding(16.dp),
+                    verticalArrangement = Arrangement.spacedBy(8.dp)
+                ) {
+                    Text(text = item.title, color = Color(0xFFFFD200), fontSize = 20.sp)
+                    Text(text = item.description, color = Color.White, fontSize = 16.sp)
+                }
+            }
+        }
+    }
+}
