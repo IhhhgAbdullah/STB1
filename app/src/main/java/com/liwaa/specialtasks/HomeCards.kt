@@ -20,12 +20,14 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 
+private val openable = setOf("الأخبار اليومية", "إنجازات اللواء", "البيانات الرسمية")
+
 @Composable
 fun HomeCards() {
     var openedSection by remember { mutableStateOf<String?>(null) }
 
     val opened = openedSection
-    if (opened == "الأخبار اليومية" || opened == "إنجازات اللواء") {
+    if (opened != null && opened in openable) {
         Column(
             modifier = Modifier
                 .fillMaxSize()
@@ -42,7 +44,11 @@ fun HomeCards() {
                     .clickable { openedSection = null }
                     .padding(12.dp)
             )
-            if (opened == "الأخبار اليومية") NewsScreen() else AchievementsScreen()
+            when (opened) {
+                "الأخبار اليومية" -> NewsScreen()
+                "إنجازات اللواء" -> AchievementsScreen()
+                else -> StatementsScreen()
+            }
         }
         return
     }
@@ -73,9 +79,7 @@ fun HomeCards() {
                     .fillMaxWidth()
                     .background(Color(0xFF161616))
                     .clickable {
-                        if (title == "الأخبار اليومية" || title == "إنجازات اللواء") {
-                            openedSection = title
-                        }
+                        if (title in openable) openedSection = title
                     }
                     .padding(20.dp)
             )
