@@ -7,6 +7,8 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.rememberScrollState
+import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
@@ -19,14 +21,8 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 
 private val openable = setOf(
-    "الأخبار اليومية",
-    "شريط الأخبار",
-    "إنجازات اللواء",
-    "أرشيف الصور",
-    "أرشيف الفيديوهات",
-    "صور وسيرة الشهداء",
-    "البيانات الرسمية",
-    "عن اللواء"
+    "الأخبار اليومية", "إنجازات اللواء", "البيانات الرسمية",
+    "أرشيف الصور", "عن اللواء", "صور وسيرة الشهداء", "أرشيف الفيديوهات"
 )
 
 @Composable
@@ -53,15 +49,47 @@ fun HomeCards() {
             )
             when (opened) {
                 "الأخبار اليومية" -> NewsScreen()
-                "شريط الأخبار" -> NewsTickerScreen()
                 "إنجازات اللواء" -> AchievementsScreen()
                 "أرشيف الصور" -> PhotosScreen()
-                "أرشيف الفيديوهات" -> VideosScreen()
-                "صور وسيرة الشهداء" -> MartyrsScreen()
-                "البيانات الرسمية" -> OfficialDataScreen()
                 "عن اللواء" -> AboutScreen()
-                else -> {}
+                "صور وسيرة الشهداء" -> MartyrsScreen()
+                "أرشيف الفيديوهات" -> VideosScreen()
+                else -> StatementsScreen()
             }
+        }
+        return
+    }
+
+    val sections = listOf(
+        "الأخبار اليومية",
+        "شريط الأخبار",
+        "إنجازات اللواء",
+        "أرشيف الصور",
+        "أرشيف الفيديوهات",
+        "صور وسيرة الشهداء",
+        "البيانات الرسمية",
+        "عن اللواء"
+    )
+
+    Column(
+        modifier = Modifier
+            .fillMaxSize()
+            .verticalScroll(rememberScrollState()),
+        verticalArrangement = Arrangement.spacedBy(12.dp)
+    ) {
+        sections.forEach { title ->
+            Text(
+                text = title,
+                color = Color(0xFFFFD200),
+                fontSize = 20.sp,
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .background(Color(0xFF161616))
+                    .clickable {
+                        if (title in openable) openedSection = title
+                    }
+                    .padding(20.dp)
+            )
         }
     }
 }
