@@ -45,4 +45,13 @@ fun HomeCards() {
                     .fillMaxWidth()
                     .background(Color(0xFF161616))
                     .clickable { openedSection = null }
-                    .padding(12.
+                    .padding(12.dp)
+            )
+            when (opened) {
+                "الأخبار اليومية" -> NewsScreen()
+                "إنجازات اللواء" -> AchievementsScreen()
+                "أرشيف الصور" -> PhotosScreen()
+                "عن اللواء" -> AboutScreen()
+                "صور وسيرة الشهداء" -> MartyrsScreen()
+                "أرشيف الفيديوهات" -> VideosScreen()
+                else ->
