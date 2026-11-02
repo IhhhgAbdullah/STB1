@@ -1,6 +1,7 @@
 package com.liwaa.specialtasks
 
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
@@ -24,7 +25,12 @@ fun HomeCards() {
     var openedSection by remember { mutableStateOf<String?>(null) }
 
     if (openedSection == "الأخبار اليومية") {
-        Column(modifier = Modifier.fillMaxSize()) {
+        Column(
+            modifier = Modifier
+                .fillMaxSize()
+                .padding(16.dp),
+            verticalArrangement = Arrangement.spacedBy(12.dp)
+        ) {
             Text(
                 text = "رجوع",
                 color = Color(0xFFFFD200),
@@ -32,8 +38,8 @@ fun HomeCards() {
                 modifier = Modifier
                     .fillMaxWidth()
                     .background(Color(0xFF161616))
+                    .clickable { openedSection = null }
                     .padding(12.dp)
-                    .let { it }
             )
             NewsScreen()
         }
@@ -54,8 +60,6 @@ fun HomeCards() {
     Column(
         modifier = Modifier
             .fillMaxSize()
-            .background(Color.Black)
-            .padding(16.dp)
             .verticalScroll(rememberScrollState()),
         verticalArrangement = Arrangement.spacedBy(12.dp)
     ) {
@@ -67,10 +71,10 @@ fun HomeCards() {
                 modifier = Modifier
                     .fillMaxWidth()
                     .background(Color(0xFF161616))
-                    .padding(20.dp)
-                    .let { base ->
-                        base
+                    .clickable {
+                        if (title == "الأخبار اليومية") openedSection = title
                     }
+                    .padding(20.dp)
             )
         }
     }
