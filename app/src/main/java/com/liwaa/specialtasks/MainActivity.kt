@@ -28,7 +28,7 @@ class MainActivity : ComponentActivity() {
                 modifier = Modifier
                     .fillMaxSize()
                     .background(Color.Black)
-                    .padding(16.dp),
+                    .padding(top = 16.dp, start = 16.dp, end = 16.dp, bottom = 16.dp),
                 horizontalAlignment = Alignment.CenterHorizontally
             ) {
                 Image(
@@ -45,6 +45,7 @@ class MainActivity : ComponentActivity() {
                     fontSize = 22.sp,
                     textAlign = TextAlign.Center
                 )
+                TickerBar(modifier = Modifier.fillMaxWidth())
                 HomeCards()
             }
         }
